@@ -12,12 +12,10 @@ require (
 	github.com/go-openapi/validate v0.21.0
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/lib/pq v1.10.7
-	github.com/swaggo/swag v1.8.10
 	golang.org/x/net v0.0.0-20220722155237-a158d28d115b
 )
 
 require (
-	github.com/KyleBanks/depth v1.2.1 // indirect
 	github.com/PuerkitoBio/purell v1.1.1 // indirect
 	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
@@ -32,6 +30,5 @@ require (
 	go.mongodb.org/mongo-driver v1.11.1 // indirect
 	golang.org/x/sys v0.4.0 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	golang.org/x/tools v0.1.12 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

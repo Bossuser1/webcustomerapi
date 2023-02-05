@@ -48,3 +48,5 @@ aller sur le lien http://127.0.0.1:8080/docs#/ apres avoir fait la commande ci-d
 ```
 go run cmd/api-server/main.go
 ```
+
+![alt text](https://github.com/Bossuser1/webcustomerapi/blob/swagger/documentation/img/add_image_2.JPG?raw=true)

@@ -12,6 +12,8 @@ import (
 
 	"github.com/webcustomerapi/restapi/operations"
 	"github.com/webcustomerapi/restapi/operations/customer"
+
+	api_get_connection "github.com/webcustomerapi/work/api/customer"
 )
 
 //go:generate swagger generate server --target ../../webcustomerapi --name API --spec ../api.json --principal interface{}
@@ -23,7 +25,7 @@ func configureFlags(api *operations.APIAPI) {
 func configureAPI(api *operations.APIAPI) http.Handler {
 	// configure the api here
 	api.ServeError = errors.ServeError
-
+	
 	// Set your custom logger if needed. Default one is log.Printf
 	// Expected interface func(string, ...interface{})
 	//
@@ -43,12 +45,10 @@ func configureAPI(api *operations.APIAPI) http.Handler {
 			return middleware.NotImplemented("operation operations.Getconection has not yet been implemented")
 		})
 	}
-	if api.CustomerGetconnectionbyidHandler == nil {
-		api.CustomerGetconnectionbyidHandler = customer.GetconnectionbyidHandlerFunc(func(params customer.GetconnectionbyidParams) middleware.Responder {
-			return middleware.NotImplemented("operation customer.Getconnectionbyid has not yet been implemented")
-		})
-	}
-
+	api.CustomerGetconnectionbyidHandler = customer.GetconnectionbyidHandlerFunc(func(params customer.GetconnectionbyidParams) middleware.Responder {
+			return api_get_connection.DoGetConnection(params)
+	})
+	
 	api.PreServerShutdown = func() {}
 
 	api.ServerShutdown = func() {}
