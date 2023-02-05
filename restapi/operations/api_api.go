@@ -42,7 +42,8 @@ func NewAPIAPI(spec *loads.Document) *APIAPI {
 
 		JSONConsumer: runtime.JSONConsumer(),
 
-		TxtProducer: runtime.TextProducer(),
+		JSONProducer: runtime.JSONProducer(),
+		TxtProducer:  runtime.TextProducer(),
 
 		GetconectionHandler: GetconectionHandlerFunc(func(params GetconectionParams) middleware.Responder {
 			return middleware.NotImplemented("operation Getconection has not yet been implemented")
@@ -82,6 +83,9 @@ type APIAPI struct {
 	//   - application/json
 	JSONConsumer runtime.Consumer
 
+	// JSONProducer registers a producer for the following mime types:
+	//   - application/json
+	JSONProducer runtime.Producer
 	// TxtProducer registers a producer for the following mime types:
 	//   - text/plain
 	TxtProducer runtime.Producer
@@ -163,6 +167,9 @@ func (o *APIAPI) Validate() error {
 		unregistered = append(unregistered, "JSONConsumer")
 	}
 
+	if o.JSONProducer == nil {
+		unregistered = append(unregistered, "JSONProducer")
+	}
 	if o.TxtProducer == nil {
 		unregistered = append(unregistered, "TxtProducer")
 	}
@@ -219,6 +226,8 @@ func (o *APIAPI) ProducersFor(mediaTypes []string) map[string]runtime.Producer {
 	result := make(map[string]runtime.Producer, len(mediaTypes))
 	for _, mt := range mediaTypes {
 		switch mt {
+		case "application/json":
+			result["application/json"] = o.JSONProducer
 		case "text/plain":
 			result["text/plain"] = o.TxtProducer
 		}

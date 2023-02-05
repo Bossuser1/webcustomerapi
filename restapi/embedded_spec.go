@@ -44,7 +44,7 @@ func init() {
     "/connection/{id}": {
       "get": {
         "produces": [
-          "text/plain"
+          "application/json"
         ],
         "tags": [
           "customer"
@@ -121,7 +121,7 @@ func init() {
     "/connection/{id}": {
       "get": {
         "produces": [
-          "text/plain"
+          "application/json"
         ],
         "tags": [
           "customer"

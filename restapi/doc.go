@@ -12,6 +12,7 @@
 //	  - application/json
 //
 //	Produces:
+//	  - application/json
 //	  - text/plain
 //
 // swagger:meta
