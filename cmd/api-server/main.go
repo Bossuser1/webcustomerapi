@@ -25,6 +25,7 @@ func main() {
 
 	api := operations.NewAPIAPI(swaggerSpec)
 	server := restapi.NewServer(api)
+	server.Port=8080
 	defer server.Shutdown()
 
 	parser := flags.NewParser(server, flags.Default)
