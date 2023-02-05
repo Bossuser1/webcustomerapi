@@ -12,7 +12,7 @@ import (
 //
 //
 //
-var DoGetConnection= func(p api.GetconnectionbyidParams) middleware.Responder{
+var DoGetConnectionAll= func(p api.GetconnectionbyidParams) middleware.Responder{
 
 	fmt.Println(p.ID)
 	out:=db.TransformConnection(p.ID)

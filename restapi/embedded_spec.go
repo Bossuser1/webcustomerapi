@@ -27,7 +27,8 @@ func init() {
     "/connection": {
       "get": {
         "produces": [
-          "text/plain"
+          "text/plain",
+          "application/json"
         ],
         "operationId": "getconection",
         "responses": {
@@ -44,6 +45,7 @@ func init() {
     "/connection/{id}": {
       "get": {
         "produces": [
+          "text/plain",
           "application/json"
         ],
         "tags": [
@@ -75,15 +77,17 @@ func init() {
     "connection": {
       "description": "information connection",
       "type": "object",
-      "required": [
-        "Ip",
-        "DateConnect"
-      ],
       "properties": {
         "DateConnect": {
           "description": "DateConnect",
           "type": "string",
           "x-go-name": "DateConnect"
+        },
+        "ID": {
+          "description": "id in database",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Id"
         },
         "Ip": {
           "description": "idnav",
@@ -104,6 +108,7 @@ func init() {
     "/connection": {
       "get": {
         "produces": [
+          "application/json",
           "text/plain"
         ],
         "operationId": "getconection",
@@ -121,7 +126,8 @@ func init() {
     "/connection/{id}": {
       "get": {
         "produces": [
-          "application/json"
+          "application/json",
+          "text/plain"
         ],
         "tags": [
           "customer"
@@ -152,15 +158,17 @@ func init() {
     "connection": {
       "description": "information connection",
       "type": "object",
-      "required": [
-        "Ip",
-        "DateConnect"
-      ],
       "properties": {
         "DateConnect": {
           "description": "DateConnect",
           "type": "string",
           "x-go-name": "DateConnect"
+        },
+        "ID": {
+          "description": "id in database",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Id"
         },
         "Ip": {
           "description": "idnav",

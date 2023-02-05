@@ -8,10 +8,8 @@ package models
 import (
 	"context"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // Connection information connection
@@ -20,47 +18,17 @@ import (
 type Connection struct {
 
 	// DateConnect
-	// Required: true
-	DateConnect *string `json:"DateConnect"`
+	DateConnect string `json:"DateConnect,omitempty"`
+
+	// id in database
+	ID int64 `json:"ID,omitempty"`
 
 	// idnav
-	// Required: true
-	IP *string `json:"Ip"`
+	IP string `json:"Ip,omitempty"`
 }
 
 // Validate validates this connection
 func (m *Connection) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateDateConnect(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIP(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *Connection) validateDateConnect(formats strfmt.Registry) error {
-
-	if err := validate.Required("DateConnect", "body", m.DateConnect); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *Connection) validateIP(formats strfmt.Registry) error {
-
-	if err := validate.Required("Ip", "body", m.IP); err != nil {
-		return err
-	}
-
 	return nil
 }
 

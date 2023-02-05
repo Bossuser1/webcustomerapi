@@ -8,7 +8,8 @@
     "/connection": {
       "get": {
         "produces": [
-          "text/plain"
+          "text/plain",
+          "application/json"
         ],
         "operationId": "getconection",
         "responses": {
@@ -25,6 +26,7 @@
     "/connection/{id}": {
       "get": {
         "produces": [
+          "text/plain",
           "application/json"
         ],
         "tags": [
@@ -56,11 +58,13 @@
     "connection": {
       "description": "information connection",
       "type": "object",
-      "required": [
-        "Ip",
-        "DateConnect"
-      ],
       "properties": {
+        "ID": {
+          "description": "id in database",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Id"
+        },
         "Ip": {
           "description": "idnav",
           "type": "string",

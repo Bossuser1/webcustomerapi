@@ -10,6 +10,8 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/runtime/middleware"
 
+	"github.com/webcustomerapi/dbmodels"
+
 	"github.com/webcustomerapi/restapi/operations"
 	"github.com/webcustomerapi/restapi/operations/customer"
 
@@ -17,6 +19,11 @@ import (
 )
 
 //go:generate swagger generate server --target ../../webcustomerapi --name API --spec ../api.json --principal interface{}
+
+func init(){
+	dbmodels.InitDb()
+}
+
 
 func configureFlags(api *operations.APIAPI) {
 	// api.CommandLineOptionsGroups = []swag.CommandLineOptionsGroup{ ... }
