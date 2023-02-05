@@ -1,0 +1,77 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "BOTBIO"
+  },
+  "paths": {
+    "/connection": {
+      "get": {
+        "produces": [
+          "text/plain"
+        ],
+        "operationId": "getconection",
+        "responses": {
+          "200": {
+            "description": "returns a greeting",
+            "schema": {
+              "type": "string",
+              "description": "contains the actual greeting as plain text"
+            }
+          }
+        }
+      }
+    },
+    "/connection/{id}": {
+      "get": {
+        "produces": [
+          "text/plain"
+        ],
+        "tags": [
+          "customer"
+        ],
+        "operationId": "getconnectionbyid",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of user in database",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "information connection",
+            "schema": {
+              "$ref": "#/definitions/connection"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "connection": {
+      "description": "information connection",
+      "type": "object",
+      "required": [
+        "Ip",
+        "DateConnect"
+      ],
+      "properties": {
+        "Ip": {
+          "description": "idnav",
+          "type": "string",
+          "x-go-name": "Ip"
+        },
+        "DateConnect": {
+          "description": "DateConnect",
+          "type": "string",
+          "x-go-name": "DateConnect"
+        }
+      }
+    }
+  }
+}
